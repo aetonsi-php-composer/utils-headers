@@ -11,7 +11,7 @@ class Headers
      *
      * @return string|null Authorization header or null
      */
-    public static function getAuthorizationHeader() // TODO move to github and include via composer
+    public static function getAuthorizationHeader()
     {
         $header = null;
         if (isset($_SERVER['Authorization'])) {
