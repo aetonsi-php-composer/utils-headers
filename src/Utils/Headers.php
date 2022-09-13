@@ -6,6 +6,7 @@ class Headers
 {
     /**
      * Returns the value of the http Authorization header if present, or else null
+     *
      * Adapted from: https://gist.github.com/wildiney/b0be69ff9960642b4f7d3ec2ff3ffb0b
      *
      * @return string|null Authorization header or null
@@ -31,6 +32,7 @@ class Headers
 
     /**
      * Returns the value of the Bearer token if present, or else null
+     *
      * Adapted from: https://gist.github.com/wildiney/b0be69ff9960642b4f7d3ec2ff3ffb0b
      *
      * @return string|null Bearer token value
