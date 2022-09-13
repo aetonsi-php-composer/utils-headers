@@ -2,8 +2,6 @@
 
 namespace Aetonsi\Utils;
 
-require __DIR__ . '/../../vendor/autoload.php';
-
 class Headers
 {
     /**
