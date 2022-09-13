@@ -1,0 +1,21 @@
+{
+    "name": "aetonsi/utils-headers",
+    "description": "utils class Aetonsi\\Utils\\Headers",
+    "version": "0.0.1",
+    "type": "library",
+    "require": {
+        "php": ">=5"
+    },
+    "license": "WTFPL",
+    "authors": [
+        {
+            "name": "aetonsi",
+            "email": "18366087+aetonsi@users.noreply.github.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Aetonsi\\Utils\\": "src/Utils/"
+        }
+    }
+}
