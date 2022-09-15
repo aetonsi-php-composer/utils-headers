@@ -1,7 +1,7 @@
 {
     "name": "aetonsi/utils-headers",
     "description": "utils class Aetonsi\\Utils\\Headers",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "type": "library",
     "require": {
         "php": ">=5"
@@ -15,7 +15,7 @@
     ],
     "autoload": {
         "psr-4": {
-          "Aetonsi\\Utils\\": "src/Utils/"
+            "Aetonsi\\Utils\\": "src/Utils/"
         }
     }
 }
