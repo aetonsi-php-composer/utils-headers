@@ -83,14 +83,24 @@ class Headers
         $http_response_code = 200;
         if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) || isset($_SERVER['HTTP_IF_NONE_MATCH'])) {
             // retrieve client side values
-            $clientTimestamp = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
-            \preg_match('/(W\/|w\/|)(")(.{32})(")/', $_SERVER['HTTP_IF_NONE_MATCH'], $clientHashPortions); // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match
-            $clientHash = $clientHashPortions[3];
+            if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+                $clientTimestamp = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
+            } else {
+                $clientTimestamp = null;
+            }
+            if (isset($_SERVER['HTTP_IF_NONE_MATCH'])) {
+                // if-none-match MAY start with W/
+                // see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match
+                \preg_match('/(W\/|w\/|)(")(.{32})(")/', $_SERVER['HTTP_IF_NONE_MATCH'], $clientHashPortions);
+                $clientHash = $clientHashPortions[3];
+            } else {
+                $clientHash = null;
+            }
 
             // check if it's a 304 or not
             $timestampsMatch = $clientTimestamp === $serverTimestamp;
             $hashesMatch = $clientHash === $serverHash;
-            $is304 = $checkBothTimestampAndHash ? $timestampsMatch && $hashesMatch : $timestampsMatch || $hashesMatch;
+            $is304 = $checkBothTimestampAndHash ? ($timestampsMatch && $hashesMatch) : ($timestampsMatch || $hashesMatch);
             if ($is304) {
                 // set http response code
                 $http_response_code = 304;
