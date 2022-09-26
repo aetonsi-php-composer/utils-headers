@@ -1,7 +1,6 @@
 {
     "name": "aetonsi/utils-headers",
     "description": "utils class Aetonsi\\Utils\\Headers",
-    "version": "0.2.0",
     "type": "library",
     "require": {
         "php": ">=5"
